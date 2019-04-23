@@ -21,7 +21,7 @@ class Kendryte210Platform(PlatformBase):
 
     @property
     def package_repositories(self):
-        repositories = super(RiscvPlatform, self).package_repositories or []
+        repositories = super(Kendryte210Platform, self).package_repositories or []
         if getenv("CI", "false").lower() == "true":
             repositories = [
                 "https://sourceforge.net/projects/platformio-storage/"

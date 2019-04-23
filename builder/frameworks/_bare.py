@@ -61,7 +61,7 @@ env.Append(
         "K210",
         "ARCH=K210",
         ("F_CPU", "$BOARD_F_CPU")
-    ]
+    ],
     
     ASDEFINES = [
         "CONFIG_LOG_ENABLE",  #debug flags

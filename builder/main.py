@@ -64,7 +64,7 @@ if not env.get("PIOFRAMEWORK"):
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
     target_elf = join("$BUILD_DIR", "${PROGNAME}.elf")
-    targer_firm = join("$BUILD_DIR", "${PROGNAME}.bin")
+    target_firm = join("$BUILD_DIR", "${PROGNAME}.bin")
 else:
     target_elf = env.BuildProgram()
     target_firm = env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
@@ -87,7 +87,7 @@ AlwaysBuild(target_size)
 
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 debug_tools = board_config.get("debug.tools", {})
-upload_source = targer_firm
+upload_source = target_firm
 upload_actions = []
 
 #kflash upload
