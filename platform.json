@@ -1,0 +1,119 @@
+{
+    "name": "kendryte210",
+    "title": "Kendryte K210",
+    "description": "Kendryte K210 is an AI capable RISCV64 dual core SoC",
+    "url": "http://example.com",
+    "homepage": "https://platformio.org/platforms/myplatform",
+    "license": "Apache-2.0",
+    "engines": {
+        "platformio": "~3.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/btx000/platfrom-kendryte210"
+    },
+    "version": "0.0.0",
+    "packageRepositories": [
+        "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+        "http://dl.platformio.org/packages/manifest.json",
+        {
+            "framework-arduinokendryte210":[
+                {
+                    "sha1": "2FC8A86A1F340B8CFB9D5B36FA4FE8053D21FF4D",
+                    "system": "*",
+                    "url": "https://bigbits.oss-cn-qingdao.aliyuncs.com/Platfrom-kendryte210/dl-packages/framework-arduinokendryte210-0.3.7.tar.gz",
+                    "version": "0.3.7"
+                }
+            ],
+            "framework-kendryte210-standalone-sdk":[
+                {
+                    "sha1": "72BF21F0024AED2095C7B78D52BA6F5415EBD196",
+                    "system": "*",
+                    "url": "https://bigbits.oss-cn-qingdao.aliyuncs.com/Platfrom-kendryte210/dl-packages/framework-kendryte210-standalone-sdk-0.5.4.tar.gz",
+                    "version": "0.5.4"
+                }
+            ],
+            "tool-kflash-kendryte210": [
+                {
+                    "sha1": "1F6B23E94D83799D24E20AA9C39116A9C8A022CF",
+                    "system": "*",
+                    "url": "https://bigbits.oss-cn-qingdao.aliyuncs.com/Platfrom-kendryte210/dl-packages/tool-kflash-kendryte210.tar.gz",
+                    "version": "1.0.0"
+                }
+            ],
+            "tool-openocd-kendryte210":[
+                {
+                    "sha1": "80F4A1E5AD04661150E8CF5208276A8F795EF693",
+                    "system": "linux_x86_64",
+                    "url": "https://bigbits.oss-cn-qingdao.aliyuncs.com/Platfrom-kendryte210/dl-packages/tool-openocd-kendryte210-linux_x86_64-0.2.3.tar.gz",
+                    "version": "0.2.3"
+                },
+                {
+                    "sha1": "0B296057C3744BD9B90649DBE8DC36E5CDC0DB84",
+                    "system": [
+                        "windows_amd64",
+                        "windows_x86"
+                    ],
+                    "url": "https://bigbits.oss-cn-qingdao.aliyuncs.com/Platfrom-kendryte210/dl-packages/tool-openocd-kendryte210-windows_amd64-0.2.3.tar.gz",
+                    "version": "0.2.3"
+                }
+            ],
+            "toolchain-kendryte210":[
+                {
+                    "sha1": "73079D666E021A547EA3A24AB7464E2396A82CE3",
+                    "system": "linux_x86_64",
+                    "url": "https://bigbits.oss-cn-qingdao.aliyuncs.com/Platfrom-kendryte210/dl-packages/toolchain-kendryte210-linux_x86_64-8.2.0-20190409.tar.gz",
+                    "version": "8.2.0"
+                },
+                {
+                    "sha1": "E32A1A80F152F80E5117662ECEEAD589A583E15C",
+                    "system": "windows_amd64",
+                    "url": "https://bigbits.oss-cn-qingdao.aliyuncs.com/Platfrom-kendryte210/dl-packages/toolchain-kendryte210-windows_amd64-8.2.0-20190409.tar.gz",
+                    "version": "8.2.0"
+                },
+                {
+                    "sha1": "0CAF0715E22208C39460CDDAA879C2F6A089846E",
+                    "system": "windows_x86",
+                    "url": "https://bigbits.oss-cn-qingdao.aliyuncs.com/Platfrom-kendryte210/dl-packages/toolchain-kendryte210-windows_x86-8.2.0-20190409.tar.gz",
+                    "version": "8.2.0"
+                }
+            ]
+        }
+    ],
+    "frameworks": {
+        "kendryte210-standalone-sdk": {
+            "package": "framework-kendryte210-standalone-sdk",
+            "script": "builder/frameworks/kendryte210-standalone-sdk.py"
+        },
+        "arduinokendryte210":{
+            "package": "framework-arduinokendryte210",
+            "script": "builder/frameworks/arduinokendryte210.py"
+        } 
+    },
+    "packages": {
+        "toolchain-kendryte210": {
+            "type": "toolchain",
+            "version": "~8.2.0"
+        },
+        "framework-arduinokendryte210": {
+            "type": "framework",
+            "optional": true,
+            "version": "~0.3.7"
+        },
+        "framework-kendryte210-standalone-sdk": {
+            "type": "framework",
+            "optional": true,
+            "version": "~0.5.4"
+        },
+        "tool-kflash-kendryte210": {
+            "type": "uploader",
+            "optional": true,
+            "version": "1.0.0"
+        },
+        "tool-openocd-kendryte210": {
+            "type": "uploader",
+            "optional": true,
+            "version": "~0.2.3"
+        }
+    }
+}
