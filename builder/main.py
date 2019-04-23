@@ -35,7 +35,8 @@ env.Append(
         ElfToBin=Builder(
             action=env.VerboseAction(" ".join([
                 "$OBJCOPY",
-                "--output-format=banary",
+                "-O",
+                "binary",
                 "$SOURCES",
                 "$TARGET"
             ]), "Building $TARGET"),

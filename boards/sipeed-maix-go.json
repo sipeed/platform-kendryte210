@@ -2,7 +2,6 @@
     "build": {
         "extra_flags": "",
         "f_cpu": "400000000L",
-        "ldscript": "kendryte.ld",
         "variant": "maix_go"
     },
     "debug": {

@@ -32,7 +32,16 @@ env.Append(
         join(FRAMEWORK_DIR, "lib", "utils", "include"),
         join(FRAMEWORK_DIR, "lib", "bsp", "include"),
         join(FRAMEWORK_DIR, "lib", "drivers", "include"),
+    ],
+    
+    LIBS = [ 
+        "c", "gcc", "m"
     ]
+
+)
+
+env.Replace(
+    LDSCRIPT_PATH = join(FRAMEWORK_DIR,"lds","kendryte.ld")
 )
 
 #

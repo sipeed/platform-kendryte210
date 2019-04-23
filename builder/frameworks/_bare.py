@@ -53,7 +53,7 @@ env.Append(
         "-std=gnu++17"
     ],
 
-    CCDEFINES = [
+    CPPDEFINES = [
         "CONFIG_LOG_ENABLE",  #debug flags
         "CONFIG_LOG_LEVEL=LOG_INFO",
         "DEBUG=1",
