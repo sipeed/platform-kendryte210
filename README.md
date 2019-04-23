@@ -1,1 +1,1 @@
-# platfrom-kendryte210
+# platform-kendryte210
