@@ -13,7 +13,7 @@ env.SConscript("_bare.py", exports="env")
 
 env.Append(
     LINKFLAGS = [
-        "-T", join(FRAMEWORK_DIR, "lds", "kendryte.ld")
+        # "-T", join(FRAMEWORK_DIR, "lds", "kendryte.ld")
     ],
 
     CPPPATH = [

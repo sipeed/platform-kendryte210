@@ -30,6 +30,30 @@ env.Replace(
 if env.get("PROGNAME", "program") == "program":
     env.Replace(PROGNAME="firmware")
 
+env.Append(
+    BUILDERS=dict(
+        ElfToBin=Builder(
+            action=env.VerboseAction(" ".join([
+                "$OBJCOPY",
+                "--output-format=banary",
+                "$SOURCES",
+                "$TARGET"
+            ]), "Building $TARGET"),
+            suffix=".bin"
+        ),
+        ElfToHex=Builder(
+            action=env.VerboseAction(" ".join([
+                "$OBJCOPY",
+                "-O",
+                "srec",
+                "$SOURCES",
+                "$TARGET"
+            ]), "Building $TARGET"),
+            suffix=".hex"
+        )
+    )
+)
+
 if not env.get("PIOFRAMEWORK"):
     env.SConscript("frameworks/_bare.py", exports="env")
 
@@ -40,11 +64,13 @@ if not env.get("PIOFRAMEWORK"):
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
     target_elf = join("$BUILD_DIR", "${PROGNAME}.elf")
+    targer_firm = join("$BUILD_DIR", "${PROGNAME}.bin")
 else:
     target_elf = env.BuildProgram()
+    target_firm = env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
 
-AlwaysBuild(env.Alias("nobuild", target_elf))
-target_buildprog = env.Alias("buildprog", target_elf, target_elf)
+AlwaysBuild(env.Alias("nobuild", target_firm))
+target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 
 #
 # Target: Print binary size
@@ -61,6 +87,7 @@ AlwaysBuild(target_size)
 
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 debug_tools = board_config.get("debug.tools", {})
+upload_source = targer_firm
 upload_actions = []
 
 #kflash upload
@@ -72,7 +99,7 @@ if upload_protocol == "kflash":
             "-n",
             "-p", "$UPLOAD_PORT",
             "-b", "$UPLOAD_SPEED",
-            "-B", "$BOARD_BURN_TOOL" # Need "burn_tool"
+            "-B", "$UPLOAD_BURN_TOOL"
         ],
         UPLOADCMD = '"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE',
     )
@@ -89,7 +116,8 @@ elif upload_protocol == "custom":
 else:
     sys.stderr.write("Warning! Unknown upload protocol %s\n" % upload_protocol)
 
-AlwaysBuild(env.Alias("upload", target_elf, upload_actions))
+AlwaysBuild(env.Alias("upload", upload_source, upload_actions))
+
 #
 # Setup default targets
 #
