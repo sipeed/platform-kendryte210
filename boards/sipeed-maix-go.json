@@ -70,9 +70,9 @@
     },
     "frameworks": [
         "kendryte210-standalone-sdk",
-        "arduinokendryte210"
+        "arduino"
     ],
-    "name": "Sipeed Maix GO",
+    "name": "BOARD_SIPEED_MAIX_GO",
     "upload": {
         "maximum_ram_size": 6291456,
         "maximum_size": 16777216,
