@@ -95,17 +95,14 @@ upload_actions = []
 if upload_protocol == "kflash":
     os_str = sys.platform
     if  os_str == "win32":
-        UPLOADEREXE = join(
-            platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash_py.exe"),
+        UPLOADEREXE = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash_py.exe")
+        PATHON3PATH = ''
     elif os_str == "darwin":
-        UPLOADEREXE = [
-            "/usr/local/bin/python3", 
-            join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")]
+        UPLOADEREXE = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")
+        PATHON3PATH = "/usr/local/bin/python3" + " "
     else:
-        UPLOADEREXE = [
-            "python3", 
-            join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")
-        ]
+        UPLOADEREXE = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")
+        PATHON3PATH = "python3" + " "
 
     env.Replace(
         UPLOADER = UPLOADEREXE,
@@ -116,7 +113,7 @@ if upload_protocol == "kflash":
             "-B", board_config.get("upload.burn_tool")
         ],
         
-        UPLOADCMD = '"$UPLOADER" $UPLOADERFLAGS $SOURCE',
+        UPLOADCMD = PATHON3PATH + '"$UPLOADER" $UPLOADERFLAGS $SOURCE',
     )
     upload_actions = [
         env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
