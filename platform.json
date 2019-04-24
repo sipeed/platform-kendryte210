@@ -24,7 +24,7 @@
         },
         "arduinokendryte210":{
             "package": "framework-arduinokendryte210",
-            "script": "builder/frameworks/arduinokendryte210.py"
+            "script": "builder/frameworks/arduino.py"
         } 
     },
     "packages": {

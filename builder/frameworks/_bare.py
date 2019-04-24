@@ -56,18 +56,18 @@ env.Append(
 
     CPPDEFINES = [
         "CONFIG_LOG_ENABLE",  #debug flags
-        "CONFIG_LOG_LEVEL=LOG_INFO",
-        "DEBUG=1",
+        ("CONFIG_LOG_LEVEL", "LOG_INFO"),
+        ("DEBUG", "1"),
         "__riscv64",
         "K210",
-        "ARCH=K210",
+        ("ARCH", "K210"),
         ("F_CPU", "$BOARD_F_CPU")
     ],
     
     ASDEFINES = [
         "CONFIG_LOG_ENABLE",  #debug flags
-        "CONFIG_LOG_LEVEL=LOG_INFO",
-        "DEBUG=1",
+        ("CONFIG_LOG_LEVEL", "LOG_INFO"),
+        ("DEBUG", "1"),
         "__riscv64"
     ],
 
