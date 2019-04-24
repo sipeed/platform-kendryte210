@@ -40,7 +40,8 @@ env.Append(
         "-Wno-error=comment",
         "-Wno-error=logical-not-parentheses",
         "-Wno-error=duplicate-decl-specifier",
-        "-Wno-error=parentheses"
+        "-Wno-error=parentheses",
+        "-Wno-error=maybe-uninitialized"
     ],
 
     CFLAGS = [

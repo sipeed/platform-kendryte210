@@ -125,7 +125,22 @@ if upload_protocol == "kflash":
 
 #TODO:openocd debug upload
 elif upload_protocol in debug_tools:
-    pass 
+    openocd_args = [
+        "-c",
+        "debug_level %d" % (2 if int(ARGUMENTS.get("PIOVERBOSE", 0)) else 1),
+        "-s", platform.get_package_dir("tool-openocd-kendryte210") or ""
+    ]
+    openocd_args.extend(
+        debug_tools.get(upload_protocol).get("server").get("arguments", []))
+    openocd_args.extend([
+        "-c", "program {$SOURCE} %s verify; shutdown;" %
+        board_config.get("upload").get("flash_start", "")
+    ])
+    env.Replace(
+        UPLOADER="openocd",
+        UPLOADERFLAGS=openocd_args,
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
 # custom upload tool
 elif upload_protocol == "custom":
