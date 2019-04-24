@@ -93,18 +93,35 @@ upload_actions = []
 
 #kflash upload
 if upload_protocol == "kflash":
+    os_str = sys.platform
+    if  os_str == "win32":
+        UPLOADEREXE = join(
+            platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash_py.exe"),
+    elif os_str == "darwin":
+        UPLOADEREXE = [
+            "/usr/local/bin/python3", 
+            join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")]
+    else:
+        UPLOADEREXE = [
+            "python3", 
+            join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")
+        ]
+
     env.Replace(
-        UPLOADER = join(
-            platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py"),
+        UPLOADER = UPLOADEREXE,
         UPLOADERFLAGS = [
             "-n",
             "-p", "$UPLOAD_PORT",
             "-b", "$UPLOAD_SPEED",
-            "-B", "$UPLOAD_BURN_TOOL"
+            "-B", board_config.get("upload.burn_tool")
         ],
-        UPLOADCMD = '"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE',
+        
+        UPLOADCMD = '"$UPLOADER" $UPLOADERFLAGS $SOURCE',
     )
-    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
 
 #TODO:openocd debug upload
 elif upload_protocol in debug_tools:

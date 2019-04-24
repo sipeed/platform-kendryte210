@@ -2,6 +2,10 @@
     "build": {
         "extra_flags": "",
         "f_cpu": "400000000L",
+        "hwids": [
+            "0x0403",
+            "0x6010"
+        ],
         "variant": "maix_go"
     },
     "debug": {
