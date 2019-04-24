@@ -6,7 +6,7 @@
             "0x0403",
             "0x6010"
         ],
-        "variant": "maix_go"
+        "variant": "sipeed_maix_go"
     },
     "debug": {
         "tools": {

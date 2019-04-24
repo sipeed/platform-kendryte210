@@ -22,7 +22,7 @@
             "package": "framework-kendryte210-standalone-sdk",
             "script": "builder/frameworks/kendryte210-standalone-sdk.py"
         },
-        "arduinokendryte210":{
+        "arduino":{
             "package": "framework-arduinokendryte210",
             "script": "builder/frameworks/arduino.py"
         } 
