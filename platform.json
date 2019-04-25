@@ -1,0 +1,56 @@
+{
+    "name": "kendryte210",
+    "title": "Kendryte K210 ported by Sipeed",
+    "description": "Kendryte K210 is an AI capable RISCV64 dual core SoC, this platform is ported by Sipeed.",
+    "url": "http://www.sipeed.com",
+    "homepage": "https://platformio.org/platforms/myplatform",
+    "license": "Apache-2.0",
+    "engines": {
+        "platformio": "<5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sipeed/platform-kendryte210"
+    },
+    "version": "0.0.0",
+    "packageRepositories": [
+        "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+        "http://dl.platformio.org/packages/manifest.json"
+    ],
+    "frameworks": {
+        "kendryte210-standalone-sdk": {
+            "package": "framework-kendryte210-standalone-sdk",
+            "script": "builder/frameworks/kendryte210-standalone-sdk.py"
+        },
+        "arduino":{
+            "package": "framework-maixduino",
+            "script": "builder/frameworks/arduino.py"
+        } 
+    },
+    "packages": {
+        "toolchain-kendryte210": {
+            "type": "toolchain",
+            "version": "~8.2.0"
+        },
+        "framework-maixduino": {
+            "type": "framework",
+            "optional": true,
+            "version": "~0.3.7"
+        },
+        "framework-kendryte210-standalone-sdk": {
+            "type": "framework",
+            "optional": true,
+            "version": "~0.5.4"
+        },
+        "tool-kflash-kendryte210": {
+            "type": "uploader",
+            "optional": true,
+            "version": "~0.6.0"
+        },
+        "tool-openocd-kendryte210": {
+            "type": "uploader",
+            "optional": true,
+            "version": "~0.2.3"
+        }
+    }
+}
