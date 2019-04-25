@@ -2,6 +2,7 @@
     "build": {
         "extra_flags": "",
         "f_cpu": "400000000L",
+        "mcu": "K210",
         "hwids": [
             "0x1A86",
             "0x7523"
