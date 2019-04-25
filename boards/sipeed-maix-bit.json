@@ -3,11 +3,11 @@
         "extra_flags": "",
         "f_cpu": "400000000L",
         "hwids": [
-            "0x0403",
-            "0x6010"
+            "0x1A86",
+            "0x7523"
         ],
-        "variant": "sipeed_maix_go",
-        "board_def": "BOARD_SIPEED_MAIX_GO"
+        "variant": "sipeed_maix_one",
+        "board_def": "BOARD_SIPEED_MAIX_ONE_DOCK"
     },
     "debug": {
         "tools": {
@@ -73,12 +73,12 @@
         "kendryte210-standalone-sdk",
         "arduino"
     ],
-    "name": "Sipeed MAIX GO",
+    "name": "Sipeed MAIX BiT",
     "upload": {
         "maximum_ram_size": 6291456,
         "maximum_size": 16777216,
         "protocol": "kflash",
-        "burn_tool": "goE",
+        "burn_tool": "dan",
         "require_upload_port": true,
         "speed": 2000000
     },
