@@ -17,7 +17,7 @@ env.Append(
     CCFLAGS = [
         "-Wno-error=unused-const-variable",
         "-Wno-error=narrowing",
-        "-lpthread"
+        "-Wno-error=unused-value"
     ],
 
     CPPDEFINES = [
