@@ -104,7 +104,7 @@ if upload_protocol == "kflash":
         UPLOADEREXE = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")
         PATHON3PATH = "python3" + " "
 
-    if board_config.get("upload.burn_tool") == "goE" : #use kflash autoselect port
+    if not env.subst("$UPLOAD_PORT") and board_config.get("upload.burn_tool") == "goE" : #use kflash autoselect port
         port_str = "DEFAULT"
     else:
         port_str = "$UPLOAD_PORT"
@@ -112,7 +112,7 @@ if upload_protocol == "kflash":
     env.Replace(
         UPLOADER = UPLOADEREXE,
         UPLOADERFLAGS = [
-            "-n",
+            #"-n",
             "-p", port_str,
             "-b", "$UPLOAD_SPEED",
             "-B", board_config.get("upload.burn_tool")
