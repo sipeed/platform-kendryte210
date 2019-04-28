@@ -13,6 +13,14 @@ env.SConscript("_bare.py", exports="env")
 
 env.Append(
 
+    LINKFLAGS = [
+        "-Wl,--start-group",
+        "-lc",
+        "-lgcc",
+        "-lm",
+        "-Wl,--end-group"
+    ],
+
     CPPPATH = [
         join(FRAMEWORK_DIR, "lib", "bsp"),
         join(FRAMEWORK_DIR, "lib", "bsp", "include"),
