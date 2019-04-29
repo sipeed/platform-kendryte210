@@ -93,16 +93,6 @@ upload_actions = []
 
 #kflash upload
 if upload_protocol == "kflash":
-    os_str = sys.platform
-    if  os_str == "win32":
-        UPLOADEREXE = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash_py.exe")
-        PATHON3PATH = ''
-    elif os_str == "darwin":
-        UPLOADEREXE = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")
-        PATHON3PATH = "/usr/local/bin/python3" + " "
-    else:
-        UPLOADEREXE = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py")
-        PATHON3PATH = "python3" + " "
 
     if not env.subst("$UPLOAD_PORT") and board_config.get("upload.burn_tool") == "goE" : #use kflash autoselect port
         port_str = "DEFAULT"
@@ -110,7 +100,7 @@ if upload_protocol == "kflash":
         port_str = "$UPLOAD_PORT"
 
     env.Replace(
-        UPLOADER = UPLOADEREXE,
+        UPLOADER = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py"),
         UPLOADERFLAGS = [
             #"-n",
             "-p", port_str,
@@ -118,7 +108,7 @@ if upload_protocol == "kflash":
             "-B", board_config.get("upload.burn_tool")
         ],
         
-        UPLOADCMD = PATHON3PATH + '"$UPLOADER" $UPLOADERFLAGS $SOURCE',
+        UPLOADCMD = '"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE',
     )
     upload_actions = [
         env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),

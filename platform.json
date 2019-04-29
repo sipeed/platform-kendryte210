@@ -46,7 +46,7 @@
         "tool-kflash-kendryte210": {
             "type": "uploader",
             "optional": true,
-            "version": "~0.6.0"
+            "version": "~0.7.0"
         },
         "tool-openocd-kendryte210": {
             "type": "uploader",
