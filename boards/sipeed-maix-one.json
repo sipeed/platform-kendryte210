@@ -71,7 +71,7 @@
         }
     },
     "frameworks": [
-        "kendryte210-standalone-sdk",
+        "kendryte-standalone-sdk",
         "arduino"
     ],
     "name": "Sipeed MAIX ONE",

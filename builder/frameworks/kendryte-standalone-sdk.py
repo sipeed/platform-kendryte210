@@ -1,12 +1,12 @@
 
 
-from os.path import isdir, join 
+from os.path import isdir, join
 
 from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
 
-FRAMEWORK_DIR = env.PioPlatform().get_package_dir("framework-kendryte210-standalone-sdk")
+FRAMEWORK_DIR = env.PioPlatform().get_package_dir("framework-kendryte-standalone-sdk")
 assert FRAMEWORK_DIR and isdir(FRAMEWORK_DIR)
 
 env.SConscript("_bare.py", exports="env")
@@ -32,7 +32,7 @@ env.Append(
         join(FRAMEWORK_DIR, "lib", "freertos", "conf"),
         join(FRAMEWORK_DIR, "lib", "utils", "include"),
     ],
-    
+
     LIBPATH = [
         join(FRAMEWORK_DIR, "lib", "freertos", "portable"),
         join(FRAMEWORK_DIR, "lib", "freertos", "conf"),
@@ -41,8 +41,8 @@ env.Append(
         join(FRAMEWORK_DIR, "lib", "bsp", "include"),
         join(FRAMEWORK_DIR, "lib", "drivers", "include"),
     ],
-    
-    LIBS = [ 
+
+    LIBS = [
         "c", "gcc", "m"
     ]
 
@@ -60,7 +60,7 @@ libs = [
     env.BuildLibrary(
         join("$BUILD_DIR", "sdk-bsp"),
         join(FRAMEWORK_DIR, "lib", "bsp")),
-    
+
     env.BuildLibrary(
         join("$BUILD_DIR", "sdk-drivers"),
         join(FRAMEWORK_DIR, "lib", "drivers")),

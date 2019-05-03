@@ -19,9 +19,9 @@
         "http://dl.platformio.org/packages/manifest.json"
     ],
     "frameworks": {
-        "kendryte210-standalone-sdk": {
-            "package": "framework-kendryte210-standalone-sdk",
-            "script": "builder/frameworks/kendryte210-standalone-sdk.py"
+        "kendryte-standalone-sdk": {
+            "package": "framework-kendryte-standalone-sdk",
+            "script": "builder/frameworks/kendryte-standalone-sdk.py"
         },
         "arduino":{
             "package": "framework-maixduino",
@@ -38,7 +38,7 @@
             "optional": true,
             "version": "~0.3.8"
         },
-        "framework-kendryte210-standalone-sdk": {
+        "framework-kendryte-standalone-sdk": {
             "type": "framework",
             "optional": true,
             "version": "~0.5.4"

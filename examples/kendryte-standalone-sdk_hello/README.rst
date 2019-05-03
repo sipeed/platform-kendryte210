@@ -20,7 +20,7 @@ How to build PlatformIO based project
 .. code-block:: bash
 
     # Change directory to example
-    > cd platform-kendryte210/examples/kendryte210-standalone-sdk_hello
+    > cd platform-kendryte210/examples/kendryte-standalone-sdk_hello
 
     # Build project
     > platformio run
