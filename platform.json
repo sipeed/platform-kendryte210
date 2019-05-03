@@ -1,6 +1,6 @@
 {
     "name": "kendryte210",
-    "title": "Kendryte K210 ported by Sipeed",
+    "title": "Kendryte K210",
     "description": "Kendryte K210 is an AI capable RISCV64 dual core SoC, this platform is ported by Sipeed.",
     "url": "http://www.sipeed.com",
     "homepage": "https://platformio.org/platforms/kendryte210",
@@ -26,7 +26,7 @@
         "arduino":{
             "package": "framework-maixduino",
             "script": "builder/frameworks/arduino.py"
-        } 
+        }
     },
     "packages": {
         "toolchain-kendryte210": {
