@@ -45,12 +45,12 @@
         "tool-kflash-kendryte210": {
             "type": "uploader",
             "optional": true,
-            "version": "~0.7.0"
+            "version": "~0.8.0"
         },
         "tool-openocd-kendryte210": {
             "type": "uploader",
             "optional": true,
-            "version": "~0.2.3"
+            "version": "~0.2.2"
         }
     }
 }
