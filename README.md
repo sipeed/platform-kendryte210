@@ -1,5 +1,6 @@
 # platform-kendryte210
-
+[![Build Status](https://travis-ci.org/sipeed/platform-kendryte210.svg?branch=develop)](https://travis-ci.org/sipeed/platform-kendryte210)
+[![Build status](https://ci.appveyor.com/api/projects/status/ympddo5w1osqx6qr/branch/develop?svg=true)](https://ci.appveyor.com/project/sipeed/platform-kendryte210/branch/develop)
 
 # Usage
 
