@@ -7,8 +7,8 @@
             "0x1A86",
             "0x7523"
         ],
-        "variant": "sipeed_maix_bit",
-        "board_def": "BOARD_SIPEED_MAIX_BIT"
+        "variant": "sipeed_maix_one_dock",
+        "board_def": "BOARD_SIPEED_MAIX_ONE_DOCK"
     },
     "debug": {
         "tools": {
@@ -74,7 +74,7 @@
         "kendryte-standalone-sdk",
         "arduino"
     ],
-    "name": "Sipeed MAIX BiT",
+    "name": "Sipeed MAIX ONE DOCK",
     "upload": {
         "maximum_ram_size": 6291456,
         "maximum_size": 16777216,

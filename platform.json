@@ -12,7 +12,7 @@
         "type": "git",
         "url": "https://github.com/sipeed/platform-kendryte210.git"
     },
-    "version": "1.0.0",
+    "version": "1.1.0",
     "packageRepositories": [
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
         "http://dl.platformio.org/packages/manifest.json"
@@ -35,7 +35,7 @@
         "framework-maixduino": {
             "type": "framework",
             "optional": true,
-            "version": "~0.3.8"
+            "version": "~0.3.9"
         },
         "framework-kendryte-standalone-sdk": {
             "type": "framework",
@@ -45,7 +45,7 @@
         "tool-kflash-kendryte210": {
             "type": "uploader",
             "optional": true,
-            "version": "~0.8.0"
+            "version": "~0.8.3"
         },
         "tool-openocd-kendryte210": {
             "type": "uploader",

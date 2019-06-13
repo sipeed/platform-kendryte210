@@ -4,11 +4,11 @@
         "f_cpu": "400000000L",
         "mcu": "K210",
         "hwids": [
-            "0x1A86",
-            "0x7523"
+            "0x0403",
+            "0x6010"
         ],
-        "variant": "sipeed_maix_one",
-        "board_def": "BOARD_SIPEED_MAIX_ONE_DOCK"
+        "variant": "sipeed_maixduino",
+        "board_def": "BOARD_SIPEED_MAIXDUINO"
     },
     "debug": {
         "tools": {
@@ -74,14 +74,14 @@
         "kendryte-standalone-sdk",
         "arduino"
     ],
-    "name": "Sipeed MAIX ONE",
+    "name": "Sipeed MAIXDUINO",
     "upload": {
         "maximum_ram_size": 6291456,
         "maximum_size": 16777216,
         "protocol": "kflash",
-        "burn_tool": "dan",
+        "burn_tool": "maixduino",
         "require_upload_port": true,
-        "speed": 2000000
+        "speed": 1500000
     },
     "url": "https://www.sipeed.com/",
     "vendor": "Sipeed"
