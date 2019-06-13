@@ -1,4 +1,4 @@
-import sys 
+import sys
 from os.path import join
 
 from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS,AlwaysBuild,
@@ -7,7 +7,7 @@ from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS,AlwaysBuild,
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
-board_config = env.BoardConfig()
+board = env.BoardConfig()
 
 env.Replace(
     AR="riscv64-unknown-elf-ar",
@@ -87,14 +87,14 @@ AlwaysBuild(target_size)
 #
 
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
-debug_tools = board_config.get("debug.tools", {})
+debug_tools = board.get("debug.tools", {})
 upload_source = target_firm
 upload_actions = []
 
 #kflash upload
 if upload_protocol == "kflash":
 
-    if not env.subst("$UPLOAD_PORT") and board_config.get("upload.burn_tool") == "goE" : #use kflash autoselect port
+    if not env.subst("$UPLOAD_PORT") and board.get("upload.burn_tool") == "goE" : #use kflash autoselect port
         port_str = "DEFAULT"
     else:
         port_str = "$UPLOAD_PORT"
@@ -105,9 +105,9 @@ if upload_protocol == "kflash":
             #"-n",
             "-p", port_str,
             "-b", "$UPLOAD_SPEED",
-            "-B", board_config.get("upload.burn_tool")
+            "-B", board.get("upload.burn_tool")
         ],
-        
+
         UPLOADCMD = '"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE',
     )
     upload_actions = [
@@ -126,7 +126,7 @@ elif upload_protocol in debug_tools:
         debug_tools.get(upload_protocol).get("server").get("arguments", []))
     openocd_args.extend([
         "-c", "program {$SOURCE} %s verify; shutdown;" %
-        board_config.get("upload").get("flash_start", "")
+        board.get("upload.offset_address", "")
     ])
     env.Replace(
         UPLOADER="openocd",
