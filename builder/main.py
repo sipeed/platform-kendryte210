@@ -1,8 +1,8 @@
 import sys
 from os.path import join
 
-from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS,AlwaysBuild,
-                          Default, DefaultEnvironment)
+from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
+                          Builder, Default, DefaultEnvironment)
 
 
 env = DefaultEnvironment()
@@ -91,7 +91,6 @@ debug_tools = board.get("debug.tools", {})
 upload_source = target_firm
 upload_actions = []
 
-#kflash upload
 if upload_protocol == "kflash":
 
     if not env.subst("$UPLOAD_PORT") and board.get("upload.burn_tool") == "goE" : #use kflash autoselect port
@@ -100,34 +99,37 @@ if upload_protocol == "kflash":
         port_str = "$UPLOAD_PORT"
 
     env.Replace(
-        UPLOADER = join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py"),
-        UPLOADERFLAGS = [
-            #"-n",
+        UPLOADER=join(platform.get_package_dir("tool-kflash-kendryte210") or "", "kflash.py"),
+        UPLOADERFLAGS=[
+            # "-n",
             "-p", port_str,
             "-b", "$UPLOAD_SPEED",
             "-B", board.get("upload.burn_tool")
         ],
 
-        UPLOADCMD = '"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE',
+        UPLOADCMD='"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE',
     )
     upload_actions = [
         env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
         env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
     ]
 
-#TODO:openocd debug upload
+# TODO: openocd debug upload
 elif upload_protocol in debug_tools:
     openocd_args = [
-        "-c",
-        "debug_level %d" % (2 if int(ARGUMENTS.get("PIOVERBOSE", 0)) else 1),
-        "-s", platform.get_package_dir("tool-openocd-kendryte210") or ""
+        "-d%d" % (2 if int(ARGUMENTS.get("PIOVERBOSE", 0)) else 1)
     ]
     openocd_args.extend(
         debug_tools.get(upload_protocol).get("server").get("arguments", []))
     openocd_args.extend([
-        "-c", "program {$SOURCE} %s verify; shutdown;" %
+        "-c", "program {$SOURCE} %s verify reset; shutdown;" %
         board.get("upload.offset_address", "")
     ])
+    openocd_args = [
+        f.replace("$PACKAGE_DIR",
+                  platform.get_package_dir("tool-openocd-kendryte") or "")
+        for f in openocd_args
+    ]
     env.Replace(
         UPLOADER="openocd",
         UPLOADERFLAGS=openocd_args,

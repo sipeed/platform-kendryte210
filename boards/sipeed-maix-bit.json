@@ -10,66 +10,6 @@
         "variant": "sipeed_maix_bit",
         "board_def": "BOARD_SIPEED_MAIX_BIT"
     },
-    "debug": {
-        "tools": {
-            "ftdi": {
-                "init_cmds": [
-                    "define pio_reset_halt_target",
-                    "   monitor init",
-                    "   monitor halt",
-                    "end",
-                    "define pio_reset_target",
-                    "   pio_reset_halt_target",
-                    "end",
-                    "target remote $DEBUG_PORT",
-                    "set arch riscv:rv64",
-                    "set mem inaccessible-by-default off",
-                    "set remotetimeout 250",
-                    "$INIT_BREAK",
-                    "$LOAD_CMD",
-                    "pio_reset_halt_target"
-                ],
-                "onboard": false,
-                "server": {
-                    "arguments": [
-                        "-f",
-                        "kendryte_ftdi.cfg",
-                        "-m0"
-                    ],
-                    "executable": "bin/openocd",
-                    "package": "tool-openocd-kendryte210"
-                }
-            },
-            "jlink": {
-                "init_cmds": [
-                    "define pio_reset_halt_target",
-                    "   monitor init",
-                    "   monitor halt",
-                    "end",
-                    "define pio_reset_target",
-                    "   pio_reset_halt_target",
-                    "end",
-                    "target remote $DEBUG_PORT",
-                    "set arch riscv:rv64",
-                    "set mem inaccessible-by-default off",
-                    "set remotetimeout 250",
-                    "$INIT_BREAK",
-                    "$LOAD_CMD",
-                    "pio_reset_halt_target"
-                ],
-                "onboard": false,
-                "server": {
-                    "arguments": [
-                        "-f",
-                        "kendryte_jlink.cfg",
-                        "-m0"
-                    ],
-                    "executable": "bin/openocd",
-                    "package": "tool-openocd-kendryte210"
-                }
-            }
-        }
-    },
     "frameworks": [
         "kendryte-standalone-sdk",
         "kendryte-freertos-sdk",
@@ -79,7 +19,6 @@
     "upload": {
         "maximum_ram_size": 6291456,
         "maximum_size": 16777216,
-        "protocol": "kflash",
         "burn_tool": "dan",
         "require_upload_port": true,
         "speed": 2000000

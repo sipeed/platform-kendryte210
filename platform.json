@@ -56,10 +56,10 @@
             "optional": true,
             "version": "~0.9.1"
         },
-        "tool-openocd-kendryte210": {
+        "tool-openocd-kendryte": {
             "type": "uploader",
             "optional": true,
-            "version": "~0.2.2"
+            "version": "^1.203.0"
         }
     }
 }
