@@ -29,7 +29,7 @@
                     "$LOAD_CMD",
                     "pio_reset_halt_target"
                 ],
-                "onboard": true,
+                "onboard": false,
                 "server": {
                     "arguments": [
                         "-f",
@@ -57,7 +57,7 @@
                     "$LOAD_CMD",
                     "pio_reset_halt_target"
                 ],
-                "onboard": true,
+                "onboard": false,
                 "server": {
                     "arguments": [
                         "-f",
@@ -72,6 +72,7 @@
     },
     "frameworks": [
         "kendryte-standalone-sdk",
+        "kendryte-freertos-sdk",
         "arduino"
     ],
     "name": "Sipeed MAIXDUINO",
