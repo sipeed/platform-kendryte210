@@ -1,0 +1,28 @@
+{
+    "build": {
+        "extra_flags": "",
+        "f_cpu": "400000000L",
+        "mcu": "K210",
+        "hwids": [
+            "0x0403",
+            "0x6010"
+        ],
+        "variant": "sipeed_maix_bit",
+        "board_def": "BOARD_SIPEED_MAIX_BIT"
+    },
+    "frameworks": [
+        "kendryte-standalone-sdk",
+        "kendryte-freertos-sdk",
+        "arduino"
+    ],
+    "name": "Sipeed MAIX BiT with Mic",
+    "upload": {
+        "maximum_ram_size": 6291456,
+        "maximum_size": 16777216,
+        "burn_tool": "bit_mic",
+        "require_upload_port": true,
+        "speed": 1500000
+    },
+    "url": "https://www.sipeed.com/",
+    "vendor": "Sipeed"
+}
