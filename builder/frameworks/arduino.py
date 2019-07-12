@@ -50,12 +50,7 @@ env.Append(
     ],
     
     LIBPATH = [
-        join(SDK_DIR, "lib", "freertos", "portable"),
-        join(SDK_DIR, "lib", "freertos", "conf"),
-        join(SDK_DIR, "lib", "freertos", "include"),
-        join(SDK_DIR, "lib", "utils", "include"),
-        join(SDK_DIR, "lib", "bsp", "include"),
-        join(SDK_DIR, "lib", "drivers", "include"),
+
     ],
     
     LIBS = [ 
