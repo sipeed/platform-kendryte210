@@ -47,7 +47,8 @@ class Kendryte210Platform(PlatformBase):
             "olimex-arm-usb-ocd",
             "olimex-jtag-tiny",
             "iot-bus-jtag",
-            "tumpa"
+            "tumpa",
+            "sipeed-rv-debugger"
         ]
 
         upload_protocol = board.manifest.get("upload", {}).get("protocol")
