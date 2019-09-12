@@ -1,8 +1,9 @@
 {
     "name": "kendryte210",
     "title": "Kendryte K210",
-    "description": "Kendryte K210 is an AI capable RISCV64 dual core SoC, this platform is ported by Sipeed.",
-    "url": "http://www.sipeed.com",
+    "version": "1.1.1",
+    "description": "Kendryte K210 is an AI capable RISCV64 dual core SoC.",
+    "url": "https://kendryte.com/",
     "homepage": "https://platformio.org/platforms/kendryte210",
     "license": "Apache-2.0",
     "engines": {
@@ -12,7 +13,11 @@
         "type": "git",
         "url": "https://github.com/sipeed/platform-kendryte210.git"
     },
-    "version": "1.1.1",
+    "authors": [{
+        "name": "Sipeed",
+        "email": "support@sipeed.com",
+        "url": "https://www.sipeed.com"
+    }],
     "packageRepositories": [
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
         "http://dl.platformio.org/packages/manifest.json"
