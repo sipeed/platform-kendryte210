@@ -1,0 +1,27 @@
+{
+    "build": {
+        "extra_flags": "",
+        "f_cpu": "400000000L",
+        "mcu": "K210",
+        "hwids": [
+            "0x0403",
+            "0x6010"
+        ],
+        "variant": "",
+        "board_def": "BOARD_SIPEED_MF1"
+    },
+    "frameworks": [
+        "kendryte-standalone-sdk",
+        "kendryte-freertos-sdk"
+    ],
+    "name": "Sipeed MF1 MF1",
+    "upload": {
+        "maximum_ram_size": 6291456,
+        "maximum_size": 16777216,
+        "burn_tool": "maixduino",
+        "require_upload_port": true,
+        "speed": 1500000
+    },
+    "url": "https://www.sipeed.com/",
+    "vendor": "Sipeed"
+}
