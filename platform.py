@@ -76,7 +76,8 @@ class Kendryte210Platform(PlatformBase):
                 "-s", "$PACKAGE_DIR/share/openocd/scripts",
                 "-f", "interface/%s.cfg" % openocd_interface,
                 "-c", "adapter_khz 1000",
-                "-f", "target/kendryte210.cfg"
+                "-f", "target/kendryte210.cfg",
+                "-m", "0"
             ]
 
             debug['tools'][link] = {

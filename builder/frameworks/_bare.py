@@ -25,6 +25,7 @@ env.Append(
         "-Wno-error=unused-but-set-variable",
         "-Wno-error=unused-variable",
         "-Wno-error=deprecated-declarations",
+        "-Wno-multichar",
         "-Wextra",
         "-Werror=frame-larger-than=65536",
         "-Wno-unused-parameter",

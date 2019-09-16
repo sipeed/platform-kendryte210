@@ -13,6 +13,13 @@ env.SConscript("_bare.py", exports="env")
 
 env.Append(
 
+
+    CPPDEFINES = [
+        ("NNCASE_TARGET", "k210"),
+        "TCB_SPAN_NO_EXCEPTIONS",
+        "TCB_SPAN_NO_CONTRACT_CHECKING"
+    ],
+
     LINKFLAGS = [
         "-Wl,--start-group",
         "-lc",
@@ -31,6 +38,10 @@ env.Append(
         join(FRAMEWORK_DIR, "lib", "freertos", "portable"),
         join(FRAMEWORK_DIR, "lib", "freertos", "conf"),
         join(FRAMEWORK_DIR, "lib", "utils", "include"),
+        join(FRAMEWORK_DIR, "lib", "nncase"),
+        join(FRAMEWORK_DIR, "lib", "nncase", "include"),
+        join(FRAMEWORK_DIR, "lib", "nncase", "runtime"),
+        join(FRAMEWORK_DIR, "third_party", "xtl", "include")
     ],
 
     LIBPATH = [
@@ -63,6 +74,10 @@ libs = [
     env.BuildLibrary(
         join("$BUILD_DIR", "sdk-freertos"),
         join(FRAMEWORK_DIR, "lib", "freertos")),
+
+    env.BuildLibrary(
+        join("$BUILD_DIR", "nncase"),
+        join(FRAMEWORK_DIR, "lib", "nncase")),
 ]
 
 env.Prepend(LIBS=libs)
