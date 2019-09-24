@@ -49,7 +49,7 @@ env.Append(
     ],
 
     LIBS = [
-        "c", "gcc", "m"
+        "c", "gcc", "m", "stdc++"
     ]
 
 )
