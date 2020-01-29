@@ -63,9 +63,8 @@ env.Append(
     
 )
 
-env.Replace(
-    LDSCRIPT_PATH = join(SDK_DIR,"lds","kendryte.ld")
-)
+if not env.BoardConfig().get("build.ldscript", ""):
+    env.Replace(LDSCRIPT_PATH=join(SDK_DIR, "lds", "kendryte.ld"))
 
 #
 # Target: Build Core Library
