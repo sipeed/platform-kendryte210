@@ -1,7 +1,7 @@
 {
     "name": "kendryte210",
     "title": "Kendryte K210",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Kendryte K210 is an AI capable RISCV64 dual core SoC.",
     "url": "https://kendryte.com/",
     "homepage": "https://platformio.org/platforms/kendryte210",
