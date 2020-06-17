@@ -25,11 +25,17 @@
     "frameworks": {
         "kendryte-standalone-sdk": {
             "package": "framework-kendryte-standalone-sdk",
-            "script": "builder/frameworks/kendryte-standalone-sdk.py"
+            "script": "builder/frameworks/kendryte-standalone-sdk.py",
+            "description": "Kendryte Standalone SDK without OS support",
+            "url": "https://github.com/kendryte/kendryte-standalone-sdk",
+            "title": "Kendryte Standalone SDK"
         },
         "kendryte-freertos-sdk": {
             "package": "framework-kendryte-freertos-sdk",
-            "script": "builder/frameworks/kendryte-freertos-sdk.py"
+            "script": "builder/frameworks/kendryte-freertos-sdk.py",
+            "description": "Kendryte SDK with FreeRTOS support",
+            "url": "https://github.com/kendryte/kendryte-freertos-sdk",
+            "title": "Kendryte FreeRTOS SDK"
         },
         "arduino":{
             "package": "framework-maixduino",
