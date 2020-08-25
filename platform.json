@@ -52,31 +52,37 @@
     "packages": {
         "toolchain-kendryte210": {
             "type": "toolchain",
+            "owner": "platformio",
             "version": "~8.2.0"
         },
         "framework-maixduino": {
             "type": "framework",
             "optional": true,
+            "owner": "platformio",
             "version": "~0.3.9"
         },
         "framework-kendryte-standalone-sdk": {
             "type": "framework",
             "optional": true,
+            "owner": "platformio",
             "version": "~0.5.6"
         },
         "framework-kendryte-freertos-sdk": {
             "type": "framework",
             "optional": true,
+            "owner": "platformio",
             "version": "~0.7.0"
         },
         "tool-kflash-kendryte210": {
             "type": "uploader",
             "optional": true,
+            "owner": "platformio",
             "version": "~0.9.1"
         },
         "tool-openocd-kendryte": {
             "type": "uploader",
             "optional": true,
+            "owner": "platformio",
             "version": "^1.203.0"
         }
     }
