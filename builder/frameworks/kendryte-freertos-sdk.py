@@ -70,8 +70,6 @@ env.Append(
         "-Wl,--end-group",
         join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crti.o"),
         join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crtbegin.o"),
-        join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crtend.o"),
-        join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crtn.o")
     ],
 
     CPPPATH = [
@@ -105,13 +103,20 @@ env.Append(
     ],
 
     LIBS = [
-        "c", "gcc", "m", "stdc++", "atomic"
+        "c", "gcc", "m", "stdc++", "atomic"                                                                                                                 
     ]
 
 )
 
 if not env.BoardConfig().get("build.ldscript", ""):
     env.Replace(LDSCRIPT_PATH=join(FRAMEWORK_DIR, "lds", "kendryte.ld"))
+
+env.Append(CRTEND=[
+    join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crtend.o"),
+    join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crtn.o")
+])
+
+env.Append(LINKCOM=" $CRTEND")
 
 #
 # Target: Build Core Library
