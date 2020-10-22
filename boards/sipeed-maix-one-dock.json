@@ -1,6 +1,6 @@
 {
     "build": {
-        "extra_flags": "",
+        "extra_flags": "-DBOARD_SIPEED_MAIX_ONE_DOCK",
         "f_cpu": "400000000L",
         "mcu": "K210",
         "hwids": [
