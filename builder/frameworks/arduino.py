@@ -1,5 +1,6 @@
 
 
+import os
 from os.path import isdir, join 
 
 from SCons.Script import DefaultEnvironment
@@ -23,7 +24,10 @@ env.Append(
     CPPDEFINES = [
         ("ARDUINO", 10805),
         ("ARDUINO_VARIANT", '\\"%s\\"' % env.BoardConfig().get("build.variant").replace('"', "")),
-        ("ARDUINO_BOARD", '\\"%s\\"' % env.BoardConfig().get("build.board_def").replace('"', ""))
+        ("ARDUINO_BOARD", '\\"%s\\"' % env.BoardConfig().get("build.board_def").replace('"', "")),
+        ("NNCASE_TARGET", "k210"),
+        "TCB_SPAN_NO_EXCEPTIONS",
+        "TCB_SPAN_NO_CONTRACT_CHECKING"
     ],
 
     LINKFLAGS = [
@@ -47,8 +51,12 @@ env.Append(
         join(SDK_DIR, "lib", "freertos", "portable"),
         join(SDK_DIR, "lib", "freertos", "conf"),
         join(SDK_DIR, "lib", "utils", "include"),
+        join(SDK_DIR, "lib", "nncase"),
+        join(SDK_DIR, "lib", "nncase", "include"),
+        join(SDK_DIR, "lib", "nncase", "runtime"),
+        join(SDK_DIR, "third_party", "xtl", "include")
     ],
-    
+
     LIBPATH = [
 
     ],
@@ -88,9 +96,9 @@ envsafe = env.Clone()
 
 libs.append(envsafe.BuildLibrary(
     join("$BUILD_DIR", "FrameworkArduino"),
-    join(FRAMEWORK_DIR, "cores", "arduino")
+    join(FRAMEWORK_DIR, "cores", "arduino"),
+    ["+<*>", "-<.git%s>" % os.sep, "-<.svn%s>" % os.sep, "-<kendryte-standalone-sdk/src/hello_world%s>" % os.sep]
 ))
-
 
 
 env.Prepend(LIBS=libs)
