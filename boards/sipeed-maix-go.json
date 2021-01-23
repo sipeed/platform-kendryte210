@@ -21,7 +21,8 @@
         "maximum_size": 16777216,
         "burn_tool": "goE",
         "require_upload_port": true,
-        "speed": 2000000
+        "speed": 2000000,
+        "slow": false
     },
     "url": "https://www.sipeed.com/",
     "vendor": "Sipeed"

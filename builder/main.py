@@ -104,7 +104,8 @@ if upload_protocol == "kflash":
             # "-n",
             "-p", port_str,
             "-b", "$UPLOAD_SPEED",
-            "-B", board.get("upload.burn_tool")
+            "-B", board.get("upload.burn_tool"),
+            "-S" if board.get("upload.slow") else ""
         ],
 
         UPLOADCMD='"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE',
