@@ -29,14 +29,14 @@ env.Append(
 
     LINKFLAGS = [
         "-Wl,--start-group",
-        # explicitly add C runtime initialization and end, otherwise "undefined reference to `__dso_handle'"
-        join(TOOLCHAIN_DIR, "lib","gcc", "riscv64-unknown-elf", "8.2.0", "crti.o"),
-        join(TOOLCHAIN_DIR, "lib","gcc", "riscv64-unknown-elf", "8.2.0", "crtbegin.o"),
+        # explicitly add C runtime initialization and end like SDK, otherwise "undefined reference to `__dso_handle'"
+        join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crti.o"),
+        join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crtbegin.o"),
         "-lgcc",
         "-lm",
         "-lc",
-        join(TOOLCHAIN_DIR, "lib","gcc", "riscv64-unknown-elf", "8.2.0", "crtend.o"),
-        join(TOOLCHAIN_DIR, "lib","gcc", "riscv64-unknown-elf", "8.2.0", "crtn.o"),
+        join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crtend.o"),
+        join(TOOLCHAIN_DIR, "lib", "gcc", "riscv64-unknown-elf", "8.2.0", "crtn.o"),
         "-Wl,--end-group",
     ],
 
