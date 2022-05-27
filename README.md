@@ -1,6 +1,6 @@
 # platform-kendryte210
 
-[![Build Status](https://github.com/psipeed/platform-kendryte210/workflows/Examples/badge.svg)](https://github.com/psipeed/platform-kendryte210/actions)
+[![Build Status](https://github.com/sipeed/platform-kendryte210/workflows/Examples/badge.svg)](https://github.com/sipeed/platform-kendryte210/actions)
 
 # Usage
 
