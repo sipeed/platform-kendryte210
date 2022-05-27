@@ -5,13 +5,19 @@ Import("env")
 
 board_config = env.BoardConfig()
 
-env.Append(
-    ASFLAGS = ["-x", "assembler-with-cpp"],
+machine_flags = [
+    "-mcmodel=medany",
+    "-mabi=lp64f",
+    "-march=rv64imafc",
+]
 
-    CCFLAGS = [
-        "-mcmodel=medany",
-        "-mabi=lp64f",
-        "-march=rv64imafc",
+env.Append(
+    ASFLAGS=machine_flags,
+    ASPPFLAGS=[
+        "-x", "assembler-with-cpp",
+    ],
+
+    CCFLAGS = machine_flags + [
         "-fno-common",
         "-ffunction-sections",
         "-fdata-sections",
@@ -64,13 +70,6 @@ env.Append(
         ("ARCH", "K210"),
         ("F_CPU", "$BOARD_F_CPU")
     ],
-    
-    ASDEFINES = [
-        "CONFIG_LOG_ENABLE",  #debug flags
-        ("CONFIG_LOG_LEVEL", "LOG_INFO"),
-        ("DEBUG", "1"),
-        "__riscv64"
-    ],
 
     LINKFLAGS = [
         "-nostartfiles",
@@ -86,6 +85,3 @@ env.Append(
         #"-T ${SDK_ROOT}/lds/kendryte.ld"
     ]
 )
-
-# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
-env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])

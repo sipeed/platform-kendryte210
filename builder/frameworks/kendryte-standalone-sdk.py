@@ -12,8 +12,6 @@ assert FRAMEWORK_DIR and isdir(FRAMEWORK_DIR)
 env.SConscript("_bare.py", exports="env")
 
 env.Append(
-
-
     CPPDEFINES = [
         ("NNCASE_TARGET", "k210"),
         "TCB_SPAN_NO_EXCEPTIONS",

@@ -13,9 +13,6 @@ assert TOOLCHAIN_DIR and isdir(TOOLCHAIN_DIR)
 env.SConscript("_bare.py", exports="env")
 
 env.Replace(
-
-    ASFLAGS = ["-x", "assembler-with-cpp"],
-
     CCFLAGS = [
         "-mcmodel=medany",
         "-mabi=lp64f",
@@ -59,9 +56,6 @@ env.Replace(
 )
 
 env.Append(
-
-    ASFLAGS=env.get("CCFLAGS", [])[:],
-
     LINKFLAGS = [
         "-Wl,--start-group",
         "-lc",
@@ -150,7 +144,7 @@ libs = [
     env.BuildLibrary(
         join("$BUILD_DIR", "third_party-lwipcore"),
         join(FRAMEWORK_DIR, "third_party", "lwip", "src", "core")),
-        
+
     env.BuildLibrary(
         join("$BUILD_DIR", "third_party-lwipapi"),
         join(FRAMEWORK_DIR, "third_party", "lwip", "src", "api")),
