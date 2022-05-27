@@ -1,6 +1,6 @@
 # platform-kendryte210
-[![Build Status](https://api.travis-ci.org/sipeed/platform-kendryte210.svg?branch=master)](https://travis-ci.org/sipeed/platform-kendryte210)
-[![Build status](https://ci.appveyor.com/api/projects/status/s78chv6nek6s30nm?svg=true)](https://ci.appveyor.com/project/Zepan/platform-kendryte210)
+
+[![Build Status](https://github.com/psipeed/platform-kendryte210/workflows/Examples/badge.svg)](https://github.com/psipeed/platform-kendryte210/actions)
 
 # Usage
 
